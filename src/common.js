@@ -14,7 +14,7 @@ export var IMPORT_MAP = hasSymbol ? Symbol() : '#';
 export var baseUrl;
 
 if (hasDocument) {
-  var baseEl = document.querySelector('base[href]');
+  var baseEl = document.querySelector && document.querySelector('base[href]');
   if (baseEl)
     baseUrl = baseEl.href;
 }
