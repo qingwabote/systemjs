@@ -248,7 +248,7 @@ var nullContext = Object.freeze(Object.create(null));
 // throws on sync errors
 function postOrderExec (loader, load, seen) {
   if (seen[load.id])
-    return;
+    return load.E;
   seen[load.id] = true;
 
   if (!load.e) {
@@ -284,7 +284,7 @@ function postOrderExec (loader, load, seen) {
     }
   });
   if (depLoadPromises)
-    return Promise.all(depLoadPromises).then(doExec);
+    return load.E = Promise.all(depLoadPromises).then(doExec);
 
   return doExec();
 
